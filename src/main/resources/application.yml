@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  security:
+    user:
+      #默认账号密码
+      name: test
+      password: 123456
+  # MySQL8 驱动不同  com.mysql.cj.jdbc.Driver 需要增加时区的配置  severTimezone=GMT%2B8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8&useSSL=false&severTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: password
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: t
+logging:
+  level:
+    root: info
