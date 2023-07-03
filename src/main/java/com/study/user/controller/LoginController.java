@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class LoginController {
 
-    @Autowired
+//    @Autowired
     AuthenticationManager authenticationManager;
 
     @GetMapping("/login")
@@ -35,19 +35,25 @@ public class LoginController {
         return "logout";
     }
 
+    @GetMapping("/logoutSuccess")
+    String logoutSuccess() {
+        System.out.println("logoutSuccess");
+        return "logoutSuccess";
+    }
+
 
     /**
      * 自定义json Login方式2，controller方式
      * */
-    @PostMapping("/customLogin")
-    @ResponseBody
-    public ResultVo customLogin(@RequestBody LoginForm form, HttpSession session) {
-        UsernamePasswordAuthenticationToken unauthenticated = UsernamePasswordAuthenticationToken.unauthenticated(form.getUsername(), form.getPassword());
-        Authentication authenticate = authenticationManager.authenticate(unauthenticated);
-        SecurityContextHolder.getContext().setAuthentication(authenticate);
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-        UserDetails principal = (UserDetails) authenticate.getPrincipal();
-        return ResultVo.success(principal);
-    }
+//    @PostMapping("/customLogin")
+//    @ResponseBody
+//    public ResultVo customLogin(@RequestBody LoginForm form, HttpSession session) {
+//        UsernamePasswordAuthenticationToken unauthenticated = UsernamePasswordAuthenticationToken.unauthenticated(form.getUsername(), form.getPassword());
+//        Authentication authenticate = authenticationManager.authenticate(unauthenticated);
+//        SecurityContextHolder.getContext().setAuthentication(authenticate);
+//        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
+//        UserDetails principal = (UserDetails) authenticate.getPrincipal();
+//        return ResultVo.success(principal);
+//    }
 
 }

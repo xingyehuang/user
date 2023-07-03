@@ -45,7 +45,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class LoginSecurityFilter {
 
     @Autowired
@@ -116,13 +116,13 @@ public class LoginSecurityFilter {
     /**
      * 自定义AuthenticationManager
      */
-    @Bean
+//    @Bean
     AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         // 内存创建查询用户
-//        provider.setUserDetailsService(users());
+        provider.setUserDetailsService(users());
         // 数据库查询用户
-        provider.setUserDetailsService(userDetailsService);
+//        provider.setUserDetailsService(userDetailsService);
         return new ProviderManager(provider);
     }
 
